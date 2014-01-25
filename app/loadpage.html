@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Bro</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/bro-main.css" />
+    <!--<link rel="stylesheet" type="text/css" href="./ext/resources/css/ext-all.css" />-->
+    <!--<script src="ext/ext-all.js"></script>-->
+    <!--<script src="app/app.js"></script>-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script  src="top-nav-panel/top-nav-panel.js"></script>
+    <!--<script type="text/javascript" src="js/lib/require.js"></script>-->
+    <!--<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>-->
+    <!--<script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>-->
+</head>
+<body style="margin: 0px;padding:0px;">
+    <div class="top-nav-wrapper" style="width:100%;height:60px;border:1px solid #000;margin:30px auto;">
+        <div class="left-container" style="width:25%;height: 100%;background-color:#737b8c;float: left;">
+            <div class="searching-wrapper">
+                <input type="text" onchange="cleanup();" value="Search"/>
+                <button type="button" value="Ok">ok</button>
+            </div>
+        </div>
+        <div class="center-container" style="width:50%;height: 100%;background-color:#fac9ff;float: left;">
+            <div class="working-navigation-wrapper" style="height: 100%;">
+                <div class="storage" style="border:0;width:25%;height: 100%;float: left;background-color: #E7E3C8;display: -webkit-box;  -webkit-box-pack:center;  -webkit-box-align:center;">
+                    Склад
+                </div>
+                <div class="working-timetable" style="border:0;width:25%;height: 100%;float: left;background-color:#75b9f0;display: -webkit-box;  -webkit-box-pack:center;  -webkit-box-align:center;">
+                    Робочий графік
+                </div>
+                <div class="history" style="border:0;width:25%;height: 100%;float: left;background-color: #E7E3C8;display: -webkit-box;  -webkit-box-pack:center;  -webkit-box-align:center;">
+                    Історія
+                </div>
+                <div class="contacts" style="border:0;width:25%;height: 100%;float: left;background-color:#75b9f0;display: -webkit-box;  -webkit-box-pack:center;  -webkit-box-align:center;">
+                    Контакти
+                </div>
+            </div>
+        </div>
+        <div class="right-container" style="width:25%;height: 100%;background-color:#737b8c;float: left; margin: auto;">
+            <div class="user-enter-wrapper" >
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <input type="text" style ="margin: 0 auto 0 20px;"/>
+                <button type="button" value="Ok">ok</button>
+            </div>
+        </div>
+    </div>
+    <div class="center-nav-wrapper" style="width:98%; min-height: 600px; border:1px solid #000;margin:0 auto 10px auto;">
+        <div class="storage-content" style="width: 100%; height: inherit; background-color: #b91324;padding:20px;">
+
+        </div>
+        <div class="working-timetable-content" style="width: 100%; height: inherit; background-color: #fbd9dd">
+            <div style="float: left; padding: 10px; margin:2px; border:1px solid #fff;">Дата</div>
+            <div style="float: left; padding: 10px; margin:2px; border:1px solid #fff;">Види робіт</div>
+            <div style="float: left; padding: 10px; margin:2px; border:1px solid #fff;">Планова кількість</div>
+            <div style="float: left; padding: 10px; margin:2px; border:1px solid #fff;">Фактична кількість</div>
+            <div style="float: left; padding: 10px; margin:2px; border:1px solid #fff;">Примітки</div>
+            <div style="float: right; padding: 10px; margin:2px; border:1px solid #fff;">Друкувати</div>
+        </div>
+        <div class="history-content" style="width: 100%; height: 100%; background-color: #bbffbb;margin:0;">
+
+        </div>
+        <div class="contacts-content" style="width: 100%; height: inherit; background-color: #219161">
+            <div class="FIO">
+                <div class="last-name">Прізвище</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <div class="name">Ім'я</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <div class="middle-name">По батькові</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+            </div>
+            <div class="company">
+                <div class="company-name">Компанія</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+            </div>
+            <div class="phone-numbers">
+                <div class="main-number">Основний номер</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <button style="margin: 5px auto 5px 15px; display: block">Додати ще один номер</button>
+            </div>
+            <div class="e-mail">
+                <div class="main-number">E-mail</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <button style="margin: 5px auto 5px 15px; display: block">Додати ще один e-mail</button>
+            </div>
+            <div class="address">
+                <div class="main-number">Адреса</div>
+                <input type="text" style="margin: 5px auto 5px 20px; display: block"/>
+                <button style="margin: 5px auto 5px 15px; display: block">Додати ще одну адресу</button>
+            </div>
+            <div class="notes">
+                <div class="main-number">Нотатки</div>
+                <input type="text"  style="margin: 5px auto 5px 20px; display: block;height: 50px;"/>
+                <button style="margin: 5px auto 5px 15px; display: block">Редагувати</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
