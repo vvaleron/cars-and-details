@@ -1,7 +1,8 @@
 var express = require('express'),
     path = require('path'),
     httpServer = require('http-server'),
-    users = require('./routes/users');
+    users = require('./routes/users'),
+    categories = require('./routes/categories');
 
 var app = express();
 
@@ -40,7 +41,19 @@ app.post('/login-user',function(req,res){
     users.findById(params, res);
 
 });
+app.post('/categories/create',function(req,res){
+    var params = {
+        success  : true,
+        errors   : {
+            clientCode      : "Client not found",
+            portOfLoading   : "This field must not be null"
+        },
+        name : req.body.name
+    };
+    res.end(JSON.stringify(params));
+});
 
+app.get('/categ', categories.findAll);
 
 
 app.listen(1337, function(){

@@ -12,6 +12,7 @@ Ext.define('MD.model.Users', {
         'mail',
         'phones',
         'description',
-        'picture'
+        'picture',
+        'currentUser'
     ]
 });

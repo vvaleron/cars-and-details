@@ -1,14 +1,22 @@
 Ext.application({
 	name:'MD',
 	autoCreateViewport:true,
-	models		:['Users'],
-	stores 		:['Users'],
+	models		:[
+        'Users',
+        'Categories'
+    ],
+	stores 		:[
+        'Users',
+        'Categories'
+    ],
 	controllers	:[
         'MD',
-        'Users'
+        'Users',
+        'Categories'
     ],
 	views		: ['Viewport'],
 	launch:function(){
-		window.$_APP = 'MD';
-	}
+		var me = this;
+        MD.users = Ext.getStore('Users').user;
+    }
 });

@@ -33,12 +33,11 @@ Ext.define('MD.controller.Users', {
                     success: function(form, action) {
                         var result = Ext.JSON.decode(action.response.responseText);
                         result.user.loginSuccess = true;
-
-                        console.log(result,'success result');
-
+                        result.user.currentUser = true;
                         user.record.set(result.user);
+                        user.store.user.setCurrent(result.user);
 
-                        console.log(user.store,'user store');
+                        userForm.close();
                     },
                     failure: function(form, action) {
                         switch (action.failureType) {
@@ -56,7 +55,8 @@ Ext.define('MD.controller.Users', {
             return userForm.getForm().submit(loginParams);
         };
 
-        var newUser = function(){
+        var loginFailMassage = function(){
+            userForm.loginFailMassage();
             console.log('start newUser()');
         };
 
@@ -64,7 +64,7 @@ Ext.define('MD.controller.Users', {
             loginUser();
         }
         else{
-            newUser();
+            loginFailMassage();
         }
     }
 });

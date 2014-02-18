@@ -16,20 +16,19 @@ initComponent:function(){
         region: 'center'
     }).show();
 
+    me.leftPanel = Ext.create('MD.view.mainScreen.leftPanel.LeftPanel',{
+        region: 'west'
+    }).show();
+
     Ext.apply(this,{
         cls     : 'wrapper',
         flex    : 1,
         fixed   : true,
         layout  : 'border',
         items: [
-            me.headerPanel
-            , {
-            region: 'west',
-            collapsible: true,
-            title: 'Navigation',
-            width: 150
-            // could use a TreePanel or AccordionLayout for navigational items
-        }, {
+            me.headerPanel,
+            me.leftPanel,
+            {
             region: 'south',
             title: 'South Panel',
             collapsible: true,
@@ -38,7 +37,7 @@ initComponent:function(){
             split: true,
             height: 100,
             minHeight: 100
-        }, {
+        },{
             region: 'east',
             title: 'East Panel',
             collapsible: true,
@@ -49,7 +48,7 @@ initComponent:function(){
         ],
         listeners:{
             beforerender:function(wrapper){
-                console.log('wrapper');
+//                console.log('wrapper');
             }
         }
     });

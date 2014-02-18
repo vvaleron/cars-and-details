@@ -10,13 +10,15 @@ Ext.define('MD.view.mainScreen.CenterPanel', {
         Ext.apply(this,{
             //title:'Деталі машин',
             title:false,
+            id:'centerPanel',
             cls: 'center-panel',
             activeTab: 0,      // First tab active by default
             items: [
             {
+                itemId: "first",
                 title: 'Авторизація',
-                items:[
-                    me.loginForm
+                items: [
+//                    me.loginForm
                 ],
                 listeners:{
                     afterrender : function(item){

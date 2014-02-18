@@ -5,7 +5,9 @@ requires:[
 	'MD.view.mainScreen.Header',
     'MD.view.mainScreen.CenterPanel',
 
-    'MD.view.Authorization.LoginForm'
+    'MD.view.Authorization.LoginForm',
+
+    'MD.view.mainScreen.leftPanel.LeftPanel'
 ],
 
 initComponent:function(){

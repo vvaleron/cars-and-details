@@ -32,6 +32,22 @@ Ext.define('MD.view.Authorization.LoginForm', {
             }]
         }).show();
 
+        me.loginFailMassage = function() { Ext.Msg.show({
+                title:'Помилка логіну',
+                msg: 'Такого аккаунта немає, чи бажаєте ви створити новий?',
+                buttons: Ext.Msg.YESNO,
+                buttonText:{
+                    yes:'Так',
+                    no:'Ні'
+                },
+                icon: Ext.Msg.QUESTION,
+                fn: function(buttonId){
+                    if(buttonId=='yes'){
+                        me.close();
+                    }
+                }
+            });
+        };
 
         me.items = [
             {   value:'igorOliynik',
@@ -72,6 +88,12 @@ Ext.define('MD.view.Authorization.LoginForm', {
             listeners:{
                 afterlayout:function(form){
                     form.center();
+                },
+                beforeclose:function(form){
+                    var panel = form.up('panel[itemId=first]'),
+                        isCurrentUser = MD.users.getCurrentRecord().getData().currentUser;
+                    if(!isCurrentUser) return;
+                        panel.setTitle('Привітулі');
                 }
             }
         });
