@@ -59,7 +59,7 @@ app.get('/categ', categories.findAll);
 app.listen(1337, function(){
     console.log('Express server listening on port 1337');
 });
-
+//
 //
 //http.createServer(app).listen(app.get('port'), function () {
 //    console.log("Express server listening on port " + app.get('port'));
