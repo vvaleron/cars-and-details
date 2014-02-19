@@ -4,7 +4,7 @@ Ext.define('MD.store.Categories', {
     model: 'MD.model.Categories',
     proxy:{
         type:'ajax',
-        url:'http://localhost:1337/categ',
+        url:'http://localhost:1337/categories',
         reader:{
             type:'json'
         }

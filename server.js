@@ -13,17 +13,17 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'app')));
 });
 
-app.get('/',function(req,res){
-    console.log(req);
-    console.log("------------------------");
-    console.log(res);
-});
-
 app.get('/users', users.findAll);
 app.get('/users/:id', users.findById);
 app.post('/users', users.addUser);
 app.put('/users/:id', users.updateUser);
 app.delete('/users/:id', users.deleteUser);
+
+app.get('/categories', categories.get);
+app.get('/categories/:id', categories.getById);
+app.post('/categories', categories.add);
+app.put('/categories/:id', categories.update);
+app.delete('/categories/:id', categories.delete);
 
 app.post('/login-user',function(req,res){
     var params = {
@@ -41,26 +41,7 @@ app.post('/login-user',function(req,res){
     users.findById(params, res);
 
 });
-app.post('/categories/create',function(req,res){
-    var params = {
-        success  : true,
-        errors   : {
-            clientCode      : "Client not found",
-            portOfLoading   : "This field must not be null"
-        },
-        name : req.body.name
-    };
-    res.end(JSON.stringify(params));
-});
-
-app.get('/categ', categories.findAll);
-
 
 app.listen(1337, function(){
     console.log('Express server listening on port 1337');
 });
-//
-//
-//http.createServer(app).listen(app.get('port'), function () {
-//    console.log("Express server listening on port " + app.get('port'));
-//});

@@ -19,17 +19,17 @@ db.open(function(err, db) {
         });
     }
 });
-
-exports.findById = function(params, res) {
-    db.collection('categories', function(err, collection) {
-        collection.findOne({ _id : new BSON.ObjectID(params.user._id) }, function(err, item) {
-            params.user = item;
-            res.end(JSON.stringify(params));
+exports.getById = function(req,res){
+    var id = req.route.params['id'];
+    console.log('Getting category by _id: '+id);
+    db.collection('categories',function(err,collection){
+        collection.findOne({ _id : new BSON.ObjectID(id) }, function(err,item){
+            console.log('Success: ',item);
+            res.end(JSON.stringify(item));
         });
     });
 };
-
-exports.findAll = function(req, res) {
+exports.get = function(req,res){
     db.collection('categories', function(err, collection) {
         collection.find().toArray(function(err, items) {
             console.log(items);
@@ -37,55 +37,51 @@ exports.findAll = function(req, res) {
         });
     });
 };
-
-exports.addCategory = function(req, res) {
-    var category = req.body;
-    console.log('Adding category: ' + JSON.stringify(category));
+exports.add = function(req,res){
+    console.log('Adding category: ' + JSON.stringify(req.body.name));
     db.collection('categories', function(err, collection) {
-        collection.insert(category, {safe:true}, function(err, result) {
+        collection.insert({name:req.body.name}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
+                res.end(JSON.stringify({success  : true}));
             }
         });
     });
-}
-
-exports.updateCategory = function(req, res) {
-    var id = req.params.id;
-    var category = req.body;
-    delete category._id;
+};
+exports.update = function(req,res){
+    var id = req.params.id,
+        category = req.body;
     console.log('Updating category: ' + id);
-    console.log(JSON.stringify(category));
     db.collection('categories', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, category, {safe:true}, function(err, result) {
+        collection.update({'_id':new BSON.ObjectID(id)},category, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating wine: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('' + result + ' document(s) updated');
-                res.send(category);
+                console.log(category);
+                res.end(JSON.stringify({success  : true}));
             }
         });
     });
-}
-
-exports.deleteCategory = function(req, res) {
-    var id = req.params.id;
+};
+exports.delete = function(req,res){
+    var id = req.params.id,
+        justOne = true;
     console.log('Deleting category: ' + id);
-    db.collection('category', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+    db.collection('categories', function(err, collection) {
+        collection.remove({'_id':new BSON.ObjectID(id)}, justOne, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
             } else {
                 console.log('' + result + ' document(s) deleted');
-                res.send(req.body);
+                res.end(JSON.stringify({success  : true}));
             }
         });
     });
-}
+};
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.

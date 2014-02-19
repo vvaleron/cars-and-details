@@ -41,6 +41,7 @@ initComponent:function(){
             region: 'east',
             title: 'East Panel',
             collapsible: true,
+            collapsed : true,
             split: true,
             width: 150
         },
