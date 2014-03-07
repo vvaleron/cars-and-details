@@ -3,16 +3,19 @@ Ext.application({
 	autoCreateViewport:true,
 	models		:[
         'Users',
-        'Categories'
+        'Categories',
+        'SubCategories'
     ],
 	stores 		:[
         'Users',
-        'Categories'
+        'Categories',
+        'SubCategories'
     ],
 	controllers	:[
         'MD',
         'Users',
-        'Categories'
+        'Categories',
+        'SubCategories'
     ],
 	views		: ['Viewport'],
 	launch:function(){

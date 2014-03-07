@@ -1,5 +1,4 @@
-var mongo = require('mongodb'),
-    subCategories = require('./subCategories');
+var mongo = require('mongodb');
 
 var Server = mongo.Server,
     Db = mongo.Db,
