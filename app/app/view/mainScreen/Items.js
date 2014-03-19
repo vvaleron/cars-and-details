@@ -70,7 +70,7 @@ Ext.define('MD.view.mainScreen.Items',{
                     menuDisabled:true,
                     sortable:false,
                     flex:1,
-                    margin:"0 20px 0 0",
+                    margin:"0 0 0 0",
                     renderer:function(value){
                         return '<div style="font-size:16px; text-align: center;padding: 10px 20px;">'+value+'</div>';
                     }

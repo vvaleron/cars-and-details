@@ -16,7 +16,7 @@ Ext.define('MD.view.mainScreen.SubCategories',{
                 title:'Додати підкатегорію',
                 titleAlign:'center',
                 frame:true,
-                width: 330,
+                width: 200,
                 bodyPadding: 10,
                 defaultType: 'textfield',
                 items:[{
@@ -57,7 +57,7 @@ Ext.define('MD.view.mainScreen.SubCategories',{
             viewConfig: {
                 stripeRows: false
             },
-            width:380,
+            width:200,
             height:300,
             autoScroll:true,
             id:'sub_categories'+MD.activeCategoryId,
@@ -69,7 +69,7 @@ Ext.define('MD.view.mainScreen.SubCategories',{
                     menuDisabled:true,
                     sortable:false,
                     flex:1,
-                    margin:"0 20px 0 0",
+                    margin:"0 0 0 0",
                     renderer:function(value){
                         return '<div style="font-size:16px; text-align: center;padding: 10px 20px;">'+value+'</div>';
                     }
