@@ -31,7 +31,7 @@ exports.getById = function(req,res){
 exports.get = function(req,res){
     db.collection('subCategories', function(err, collection) {
         collection.find().toArray(function(err, items) {
-            console.log(items);
+            //console.log(items);
             res.send(JSON.stringify(items));
         });
     });

@@ -5,6 +5,7 @@ requires:[
 	'MD.view.mainScreen.Header',
     'MD.view.mainScreen.CenterPanel',
     'MD.view.mainScreen.SubCategories',
+    'MD.view.mainScreen.Items',
 
     'MD.view.Authorization.LoginForm',
 

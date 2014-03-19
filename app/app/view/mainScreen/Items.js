@@ -1,22 +1,22 @@
-Ext.define('MD.view.mainScreen.SubCategories',{
+Ext.define('MD.view.mainScreen.Items',{
     extend:'Ext.grid.Panel',
-    alias: 'widget.SubCategories',
+    alias: 'widget.Items',
 
     initComponent:function(){
         var me = this;
 
-        me.store = Ext.getStore("SubCategories");
+        me.store = Ext.getStore("Items");
 
 
 
-        me.createSubCat = Ext.create('Ext.menu.Menu', {
+        me.createItem = Ext.create('Ext.menu.Menu', {
             closeAction:'hide',
             items: [{
                 xtype:'form',
-                title:'Додати підкатегорію',
+                title:'Додати деталь',
                 titleAlign:'center',
                 frame:true,
-                width: 330,
+                width: '100%',
                 bodyPadding: 10,
                 defaultType: 'textfield',
                 items:[{
@@ -25,14 +25,14 @@ Ext.define('MD.view.mainScreen.SubCategories',{
                     allowBlank: false,
                     fieldLabel: 'Назва',
                     name: 'name',
-                    emptyText: 'Введіть назву підкатегорії'
+                    emptyText: 'Введіть назву деталі'
                 }],
                 bbar:[{
                     xtype:'button',
                     text:'Створити',
                     width:'100%',
                     handler:function(){
-                        me.fireEvent('createNewSubCat', this.up('form'),me);
+                        me.fireEvent('createNewItem', this.up('form'),me);
                     }
                 }]
             }]
@@ -42,7 +42,7 @@ Ext.define('MD.view.mainScreen.SubCategories',{
             {
                 text:'Створити',
                 handler:function(){
-                    me.createSubCat.show();
+                    me.createItem.show();
                 }
             },
             {
@@ -54,18 +54,19 @@ Ext.define('MD.view.mainScreen.SubCategories',{
         ];
 
         Ext.apply(this,{
+            height:300,
+            flex:1,
             viewConfig: {
                 stripeRows: false
             },
-            width:380,
-            height:300,
+
             autoScroll:true,
-            id:'sub_categories'+MD.activeCategoryId,
+            id:'items'+MD.activeCategoryId,
             columns :[
                 {
                     xtype:'actioncolumn',
                     dataIndex: 'name',
-                    header:'Під категорії',
+                    header:'Деталі',
                     menuDisabled:true,
                     sortable:false,
                     flex:1,
@@ -74,12 +75,12 @@ Ext.define('MD.view.mainScreen.SubCategories',{
                         return '<div style="font-size:16px; text-align: center;padding: 10px 20px;">'+value+'</div>';
                     }
                 }
-        ],
+            ],
             listeners : {
-                itemclick : function( grid, record, td, index, e, eOpts ){
-                    me.fireEvent('selectSubCategories',me,record);
-                    //storeActions.setSelected(record.getData()._id);
-                },
+//                itemclick : function( grid, record, td, index, e, eOpts ){
+//                    me.fireEvent('',me,record);
+//                    //storeActions.setSelected(record.getData()._id);
+//                }
                 afterrender:function(grid){
                     grid.getView().getEl().applyStyles("overflow-x:hidden;overflow-y:scroll;");
 //                    var height = grid.up("#centerPanel").body.getHeight();

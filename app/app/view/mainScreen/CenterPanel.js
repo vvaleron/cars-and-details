@@ -1,5 +1,5 @@
 Ext.define('MD.view.mainScreen.CenterPanel', {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ext.container.Container',
     alias: 'widget.CenterPanel',
 
     initComponent:function(){
@@ -7,13 +7,23 @@ Ext.define('MD.view.mainScreen.CenterPanel', {
 
         me.loginForm = Ext.create('MD.view.Authorization.LoginForm',{}).show();
 
+        me.subCatGrid = Ext.create('MD.view.mainScreen.SubCategories',{}).show();
+
+        me.itemsGrid = Ext.create('MD.view.mainScreen.Items',{}).show();
+
         Ext.apply(this,{
-            activeTab: 0,      // First tab active by default
-            items: [],
+            items: [
+                me.subCatGrid,
+                me.itemsGrid
+            ],
             //title:'Деталі машин',
             title:false,
             id:'centerPanel',
             cls: 'center-panel',
+            layout:'hbox',
+            defaults:{
+                layout:'hbox'
+            },
             listeners:{
                 afterrender:function(panel){
 //                    console.log('center panel');
@@ -29,5 +39,8 @@ Ext.define('MD.view.mainScreen.CenterPanel', {
     },
     createSubCategories: function(){
         return Ext.create('MD.view.mainScreen.SubCategories',{}).show();
+    },
+    createItems:function(){
+        return Ext.create('MD.view.mainScreen.Items',{}).show();
     }
 });

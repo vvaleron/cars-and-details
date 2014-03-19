@@ -3,7 +3,8 @@ var express = require('express'),
     httpServer = require('http-server'),
     users = require('./routes/users'),
     categories = require('./routes/categories'),
-    subCategories = require('./routes/subCategories');
+    subCategories = require('./routes/subCategories'),
+    items = require('./routes/items');
 
 var app = express();
 
@@ -31,6 +32,11 @@ app.get('/sub_categories', subCategories.get);
 app.post('/sub_categories', subCategories.add);
 //app.put('/sub_categories/:id', subCategories.update);
 //app.delete('/sub_categories/:id', subCategories.delete);
+
+app.get('/items', items.getAll);
+app.get('/items/:parent_id', items.getByCategoryId);
+app.get('/items/:parent_id/:sub_parent_id', items.getBySubCatAndCat);
+app.post('/items', items.add);
 
 app.post('/login-user',function(req,res){
     var params = {

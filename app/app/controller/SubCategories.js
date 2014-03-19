@@ -5,12 +5,30 @@ Ext.define('MD.controller.SubCategories', {
 
         me.control({
             'SubCategories': {
-                'createNewSubCat':me.createNewSubCat
+                'createNewSubCat':me.createNewSubCat,
+                'selectSubCategories':me.selectSubCategories
             }
         });
     },
 
-    subCategoryStore : function(){return Ext.getStore('SubCategories')},
+    updateItemsStore:function(){
+
+//        store.updateProxy();
+//        store.reload();
+    },
+
+    selectSubCategories:function(grid,record){
+        var store = Ext.getStore("Items");
+
+        MD.activeSubCategoryId = record.getData()._id;
+
+        if(store.filters.length==2){
+            store.clearFilter();
+            store.byCategory(MD.activeCategoryId)
+        }
+
+        store.bySubCategory(MD.activeSubCategoryId);
+    },
 
     updateGrid: function(){
         var view = Ext.getCmp('sub_categories'),

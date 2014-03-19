@@ -4,12 +4,14 @@ Ext.application({
 	models		:[
         'Users',
         'Categories',
-        'SubCategories'
+        'SubCategories',
+        'Items'
     ],
 	stores 		:[
         'Users',
         'Categories',
-        'SubCategories'
+        'SubCategories',
+        'Items'
     ],
 	controllers	:[
         'MD',
