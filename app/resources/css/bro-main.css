@@ -1,3 +1,16 @@
 .CategoriesPanel{
 	background-color: grey;
 }
+.items-grid .x-grid-cell-inner{
+    height      :140px;
+}
+.items-grid .x-grid-cell-inner .items-name-value{
+    position    : absolute;
+    margin      : 15px 0 0 120px;
+}
+.itemsIcon{
+    height      : 100px;
+    width       : 100px;
+    margin      : 20px 0 0 20px;
+    position    : absolute;
+}

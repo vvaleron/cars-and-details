@@ -17,7 +17,8 @@ Ext.application({
         'MD',
         'Users',
         'Categories',
-        'SubCategories'
+        'SubCategories',
+        'Items'
     ],
 	views		: ['Viewport'],
 	launch:function(){

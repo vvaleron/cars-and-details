@@ -1,10 +1,12 @@
 var express = require('express'),
     path = require('path'),
+    fs = require('fs'),
     httpServer = require('http-server'),
     users = require('./routes/users'),
     categories = require('./routes/categories'),
     subCategories = require('./routes/subCategories'),
-    items = require('./routes/items');
+    items = require('./routes/items'),
+    upload = require('./routes/upload');
 
 var app = express();
 
@@ -26,7 +28,7 @@ app.get('/categories/:id', categories.getById);
 app.post('/categories', categories.add);
 app.put('/categories/:id', categories.update);
 app.delete('/categories/:id', categories.delete);
-//sub_categories
+
 app.get('/sub_categories', subCategories.get);
 //app.get('/sub_categories/:id', subCategories.getById);
 app.post('/sub_categories', subCategories.add);
@@ -37,6 +39,13 @@ app.get('/items', items.getAll);
 app.get('/items/:parent_id', items.getByCategoryId);
 app.get('/items/:parent_id/:sub_parent_id', items.getBySubCatAndCat);
 app.post('/items', items.add);
+
+
+
+/// Post files
+app.post('/upload/:fileType/:itemId', function(req,res){
+     return upload.file(req,res,__dirname)
+});
 
 app.post('/login-user',function(req,res){
     var params = {

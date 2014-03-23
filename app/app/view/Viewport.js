@@ -9,7 +9,9 @@ requires:[
 
     'MD.view.Authorization.LoginForm',
 
-    'MD.view.mainScreen.leftPanel.LeftPanel'
+    'MD.view.mainScreen.leftPanel.LeftPanel',
+    'MD.view.mainScreen.itemsTools.ChangeMenu',
+    "MD.view.mainScreen.itemsTools.uploadForms"
 ],
 
 initComponent:function(){

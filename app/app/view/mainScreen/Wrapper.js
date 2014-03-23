@@ -28,16 +28,17 @@ initComponent:function(){
         items: [
             me.headerPanel,
             me.leftPanel,
+//        {
+//            region: 'south',
+//            title: 'South Panel',
+//            collapsible: true,
+//            collapsed : true,
+//            html: 'Information goes here',
+//            split: true,
+//            height: 100,
+//            minHeight: 100
+//        },
             {
-            region: 'south',
-            title: 'South Panel',
-            collapsible: true,
-            collapsed : true,
-            html: 'Information goes here',
-            split: true,
-            height: 100,
-            minHeight: 100
-        },{
             region: 'east',
             title: 'East Panel',
             collapsible: true,

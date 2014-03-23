@@ -3,7 +3,7 @@ Ext.define('MD.model.Items', {
     fields: [
         {name: '_id',               type: 'string'},
         {name: 'name',              type: 'string'},
-        {name: 'picture',           type: 'string'},
+        {name: 'imageUrl',          type: 'string'},
         {name: 'categoryId',        type: 'string'},
         {name: 'subCategoryId',     type: 'string'}
     ]

@@ -64,7 +64,7 @@ Ext.define('MD.controller.Categories', {
 //            });
 //        }
     },
-    createItem:function(form,window){
+    createItem:function(form,win){
         var me = this, params ={};
             params.name = form.getValues().name;
             params.categoryId = MD.activeCategoryId;
@@ -78,10 +78,11 @@ Ext.define('MD.controller.Categories', {
             url             : '/items',
             params          : params,
             success: function(form, action) {
-                var result = Ext.JSON.decode(action.response.responseText);
-                console.log(result);
-                me.getStore('Items').reload();
-                window.close();
+                var result = Ext.JSON.decode(action.response.responseText),
+                    store = Ext.getStore('Items');
+
+                store.isLoading() ? store.reload() : store.load();
+                form.owner.up('panel').close();
             },
             failure: function(form, action) {
                 switch (action.failureType) {
