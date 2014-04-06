@@ -14,9 +14,6 @@ Ext.define('MD.controller.Categories', {
                 'deleteCategory':me.deleteCategory,
                 'change': me.change
             },
-            'CenterPanel':{
-                "tab_change":me.tab_change
-            },
             'Items':{
                 "createNewItem":me.createItem
             }
@@ -24,14 +21,8 @@ Ext.define('MD.controller.Categories', {
     },
     centerPanel : {
         getPanel : function(){return Ext.getCmp('centerPanel')},
-        createSubCategories:function(){return this.getPanel().createSubCategories()},
         createItems:function(){return this.getPanel().createItems()},
-        changeTitle:function(title){
-            this.getPanel().getActiveTab().setTitle(title);
-        },
-//        removeActiveItems:function(){
-//            this.getPanel().getActiveTab().removeAll();
-//        },
+
         setActiveItems:function(_id){
             _id ? MD.activeCategoryId = _id : null;
         },
@@ -39,30 +30,6 @@ Ext.define('MD.controller.Categories', {
         isExist:function(_id){
             return this.tabs.indexOf(_id) != -1;
         }
-//        createTab: function(data){
-//            if(! this.isExist(data._id)){
-//                this.tabs.push(MD.activeCategoryId);
-//                this.getPanel().add({
-//                    title:data.name,
-//                    id:'tab'+data._id,
-//                    items:[
-//                        this.createSubCategories(),
-//                        this.createItems()
-//                    ]
-//                });
-//            }
-//        },
-//        getMongoById:function(_id){
-//            Ext.Ajax.request({
-//                url: '/categories/'+_id,
-//                method:'GET',
-//                success: function(response){
-//                    var text = response.responseText;
-//                    console.log(text);
-//                    // process server response here
-//                }
-//            });
-//        }
     },
     createItem:function(form,win){
         var me = this, params ={};
@@ -99,12 +66,9 @@ Ext.define('MD.controller.Categories', {
         })
     },
     clearActiveSubCategories:function(){
+        var index = Ext.getStore("SubCategories").find('_id',MD.activeSubCategoryId);
+        Ext.getCmp('sub_categories').getView().deselect(index);
         MD.activeSubCategoryId=null;
-    },
-    getItemsByParent:function(){
-        var store = Ext.getStore('Items');
-//        store.updateProxy();
-//        store.reload();
     },
     filterSubCategories: function(){
         var store = Ext.getStore("SubCategories");
@@ -189,38 +153,13 @@ Ext.define('MD.controller.Categories', {
             }
         });
     },
-    selectGridItem: function(view,id){
-        var array = Ext.getStore('Categories').data.items;
-
-        array.forEach(function(item){
-            if(item.data._id==id){
-                view.select(item.index);
-            }
-        });
-
-    },
-    tab_change:function(panel,id){
-        var me = this,
-            categoryGrid = Ext.ComponentQuery.query('LeftPanel')[0];
-        me.selectGridItem(categoryGrid.getView(),id);
-        me.centerPanel.setActiveItems(id);
-        me.filterSubCategories();
-
-        me.FIByCategory(id);
-
-        me.clearActiveSubCategories();
-        me.getItemsByParent(id);
-    },
     change : function(grid,rec){
         var me = this,
             id = rec.getData()._id;
         me.centerPanel.setActiveItems(id);
-//        me.centerPanel.createTab(rec.getData());
-
         me.FIByCategory(id);
 
         me.clearActiveSubCategories();
         me.filterSubCategories();
-        me.getItemsByParent(id);
     }
  });

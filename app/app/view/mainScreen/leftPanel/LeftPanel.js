@@ -1,6 +1,7 @@
 Ext.define('MD.view.mainScreen.leftPanel.LeftPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.LeftPanel',
+    id:'categories',
 
     initComponent:function(){
         var me = this;
@@ -122,7 +123,6 @@ Ext.define('MD.view.mainScreen.leftPanel.LeftPanel', {
         me.listeners = {
             itemclick : function( grid, record, td, index, e, eOpts ){
                 me.fireEvent('change',me,record);
-                //storeActions.setSelected(record.getData()._id);
             }
         };
 

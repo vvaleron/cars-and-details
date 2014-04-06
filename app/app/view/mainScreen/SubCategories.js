@@ -60,7 +60,7 @@ Ext.define('MD.view.mainScreen.SubCategories',{
             width:200,
             height:300,
             autoScroll:true,
-            id:'sub_categories'+MD.activeCategoryId,
+            id:'sub_categories',
             columns :[
                 {
                     xtype:'actioncolumn',

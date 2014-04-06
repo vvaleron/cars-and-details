@@ -21,25 +21,5 @@ Ext.define('MD.store.Items', {
     },
     bySubCategory: function(subId){
         this.filter('subCategoryId',subId);
-    },
-    updateProxy:function(){
-        var categoryId      = MD.activeCategoryId,
-            subCategoryId   = MD.activeSubCategoryId,
-            url = Ext.isEmpty(subCategoryId) ? categoryId : categoryId +"/"+ subCategoryId;
-
-        var newProxy = {
-            type:'ajax',
-            url:'http://localhost:1337/items/' + url,
-            reader:
-                {
-                    type:'json'
-                }
-            };
-
-        console.log(categoryId,     '---------------- CATEGORIES');
-        console.log(subCategoryId,  '-------------SUB CATEGORIES');
-        console.log('http://localhost:1337/items/' + url, '-------------URL');
-
-        this.setProxy(newProxy);
     }
 });

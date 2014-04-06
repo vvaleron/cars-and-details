@@ -9,6 +9,17 @@ Ext.define('MD.view.mainScreen.Items',{
 
         me.changeMenu = Ext.create('MD.view.mainScreen.itemsTools.ChangeMenu');
 
+        me.imageComponent = Ext.create('MD.view.mainScreen.itemsTools.ItemsImages', {
+            listeners:{
+                afterrender: function(){
+                    debugger
+                }
+            },
+            handler: function (grid, rowIndex, colIndex) {
+                debugger
+            }
+        });
+
         me.createItem = Ext.create('Ext.menu.Menu', {
             closeAction:'hide',
             items: [{
@@ -65,7 +76,38 @@ Ext.define('MD.view.mainScreen.Items',{
             cls:'items-grid',
             columns :[
                 {
-                    iconCls:'itemsIcon',
+                    xtype:'actioncolumn',
+                    dataIndex: 'imageUrl',
+                    width:140,
+                    menuDisabled:true,
+                    sortable:false,
+                    listeners:{
+                        click:function(gridView, td, index, x, e, record){
+                            var el = Ext.get(e.target),
+                                isEmpty = !record.getData().imageUrl;
+
+                            if(isEmpty){
+                                alert("Додати?")
+                            }
+                            else {
+                                alert("Змінити")
+                            }
+                        }
+                    },
+                    renderer:function(url, metaData, record, rowIndex, colIndex){
+                        var attrs;
+                        if(url){
+                            var id = "id=item-icon-" + record.getData()._id;
+                            attrs =id+' src='+url;
+                            return '<img class="items-icon-cls " '+attrs+'>';
+                        }
+                        else{
+                            return '<div class="items-icon-cls no-item">+</div>';
+                        }
+
+                    }
+                },
+                {
                     xtype:'actioncolumn',
                     dataIndex: 'name',
                     header:'Деталі',
@@ -73,20 +115,33 @@ Ext.define('MD.view.mainScreen.Items',{
                     sortable:false,
                     flex:1,
                     margin:"0 0 0 0",
-                    renderer:function(value){
-                        return '<div class="items-name-value" style="font-size:16px; text-align: center;padding: 10px 20px;">'+value+'</div>';
+                    renderer:function(value, metaData, record, rowIndex, colIndex){
+                        return '<div class="items-name-value" style="font-size:16px; text-align: center;padding: 10px 5px;">'+value+'</div>';
+                    },
+                    listeners:{
+                        focus: function(column, The, eOpts){
+                            console.log(column, The, eOpts)
+                        }
+                    }
+                },{
+                    //todo: renderer
+                    xtype:'actioncolumn',
+                    dataIndex: '_id',
+                    menuDisabled:true,
+                    sortable:false,
+                    width:70,
+                    margin:"0 0 0 0",
+                    renderer:function(value, metaData, record, rowIndex, colIndex){
+                        return '<div id="change-column-' + value + '" class="change-items-wrap">Змінити</div>';
                     }
                 }
             ],
             listeners : {
-                itemclick : function( grid, record, td, index, e, eOpts ){
+                itemclick : function( gridView, record, td, index, e, eOpts ){
                     me.fireEvent('setActiveItem',me,record);
-                    //storeActions.setSelected(record.getData()._id);
                 },
                 afterrender:function(grid){
                     grid.getView().getEl().applyStyles("overflow-x:hidden;overflow-y:scroll;");
-//                    var height = grid.up("#centerPanel").body.getHeight();
-//                    grid.setHeight(height);
                 }
             }
         });

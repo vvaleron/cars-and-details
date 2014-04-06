@@ -28,7 +28,7 @@ var addUrlToDB = function(id,format){
             console.log("Connected to 'working-session' database");
             db.collection('items',{safe:true},function(err,collection){
 
-                collection.update({_id: new BSON.ObjectID(id)}, {$set: {imageUrl : "resources/images/"+id+format }}, function(err, updated) {
+                collection.update({_id: new BSON.ObjectID(id)}, {$set: {imageUrl : "resources/images/items/"+id+format }}, function(err, updated) {
                     if( err || !updated ) console.log("User not updated");
                     else console.log("User updated");
                     db.close();

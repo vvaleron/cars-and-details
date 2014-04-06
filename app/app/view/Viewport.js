@@ -10,6 +10,7 @@ requires:[
     'MD.view.Authorization.LoginForm',
 
     'MD.view.mainScreen.leftPanel.LeftPanel',
+    'MD.view.mainScreen.itemsTools.ItemsImages',
     'MD.view.mainScreen.itemsTools.ChangeMenu',
     "MD.view.mainScreen.itemsTools.uploadForms"
 ],
