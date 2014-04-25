@@ -5,19 +5,31 @@ Ext.define('MD.view.mainScreen.itemsTools.ChangeMenu', {
     initComponent:function(){
         var me = this;
 
-        me.uploadForms = Ext.create("MD.view.mainScreen.itemsTools.uploadForms",{});
+        me.updatePhotoForm = Ext.create("MD.view.mainScreen.itemsTools.uploadForms",{});
 
-        me.formWindow = Ext.create('Ext.window.Window', {
-            title: 'Завантажити Фото',
+        me.addPhotoForm = Ext.create("MD.view.mainScreen.itemsTools.uploadForms",{});
+
+        me.updatePhotoWindow = Ext.create('Ext.window.Window',{
+            title: 'Змінити фото',
             height: 200,
             width: 400,
             layout: 'fit',
             closeAction:"hide",
             items:[
-                me.uploadForms
+                me.updatePhotoForm
             ]
         });
 
+        me.addPhotoWindow = Ext.create('Ext.window.Window',{
+            title: 'Змінити фото',
+            height: 200,
+            width: 400,
+            layout: 'fit',
+            closeAction:"hide",
+            items:[
+                me.addPhotoForm
+            ]
+        });
 
         me.items = [{
             text: 'Завантажити фото',

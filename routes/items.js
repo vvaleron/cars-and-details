@@ -117,14 +117,17 @@ exports.delete = function(req,res){
     });
 };
 
-/*--------------------------------------------------------------------------------------------------------------------*/
-// Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
+//  data schema
 
 //    var items = [{
-//        name        : "Трансмісія",
-//        picture     : "transmission.jpg"
+//        _id         : "ObjectId("535ab00942c2d98413000001")",
+//        name        : "Руль"
+//        imageUrl    : "resources/images/items/535ab00942c2d98413000001.jpg.jpg",
+//        imageWidth  : 100,
+//        imageHeught : 200,
+//        subCategoryId : "535ab00942c2d98413000002",
+//        categoryId : "535ab00942c2d98413000003"
 //    }];
 //
 //    db.collection('items', function(err, collection) {
