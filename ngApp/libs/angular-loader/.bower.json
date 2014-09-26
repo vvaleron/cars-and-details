@@ -1,0 +1,18 @@
+{
+  "name": "angular2-loader",
+  "version": "1.2.17",
+  "main": "./angular2-loader.js",
+  "dependencies": {
+    "angular": "1.2.17"
+  },
+  "homepage": "https://github.com/angular2/bower-angular2-loader",
+  "_release": "1.2.17",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.17",
+    "commit": "d66b2cdc3055989fa2c406455be888a861645d42"
+  },
+  "_source": "git://github.com/angular2/bower-angular2-loader.git",
+  "_target": "1.2.x",
+  "_originalSource": "angular2-loader"
+}

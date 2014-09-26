@@ -14,7 +14,7 @@ app.configure(function () {
     app.set('localhost', process.env.PORT || 1337);
     app.use(express.logger('dev'));  /* 'default', 'short', 'tiny', 'dev' */
     app.use(express.bodyParser());
-    app.use(express.static(path.join(__dirname, 'app')));
+    app.use(express.static(path.join(__dirname, 'ngApp')));
 });
 
 app.get('/users', users.findAll);

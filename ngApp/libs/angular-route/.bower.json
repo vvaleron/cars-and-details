@@ -1,0 +1,18 @@
+{
+  "name": "angular2-route",
+  "version": "1.2.17",
+  "main": "./angular2-route.js",
+  "dependencies": {
+    "angular": "1.2.17"
+  },
+  "homepage": "https://github.com/angular2/bower-angular2-route",
+  "_release": "1.2.17",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.17",
+    "commit": "919ab6e64a7cd1352b4aff3a57e1a44cde7e962e"
+  },
+  "_source": "git://github.com/angular2/bower-angular2-route.git",
+  "_target": "1.2.x",
+  "_originalSource": "angular2-route"
+}
