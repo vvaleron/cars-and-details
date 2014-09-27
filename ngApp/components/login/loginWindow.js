@@ -1,31 +1,18 @@
 app.controller('registration-controller', ['$scope', function($scope) {
-	$scope.validateRegistration = function(){
-		var form = $("#signup");
+		$scope.user = {
+			name: '', 
+			last: '',
+			email: '',
+			password: '',
+			password2: ''
+		};
 
-		// form.validate({
-		// 	rules:{
-		// 		fname:"required",
-		// 		lname:"required",
-		// 		email:{
-		// 			required:true,
-		// 			email: true
-		// 		},
-		// 		passwd:{
-		// 			required:true,
-		// 			minlength: 8
-		// 		},
-		// 		conpasswd:{
-		// 			required:true,
-		// 			equalTo: "#passwd"
-		// 		},
-		// 		gender:"required"
-		// 	},
+		$scope.submitForm = function() {
+			if ($scope.userForm.$valid) {
+				console.log($scope.user)
+			}
 
-		// 	errorClass: "help-inline"
-
-		// });
-		
-	};
+		};
 }]);
 
 app.directive('loginWindow', function() {

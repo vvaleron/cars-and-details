@@ -1,1 +1,1 @@
-D:\mongodb\bin\mongod.exe --dbpath D:\GitHub\oli\db --rest
+D:\mongodb\bin\mongod.exe --dbpath ~/work/cars-and-details/db

@@ -1,76 +1,52 @@
 <div class="container">
-<legend>Sign Up</legend>
-<div class="well">
-      <form id="signup" class="form-horizontal">
-        <legend>Sign Up</legend>
-        <div class="control-group">
-            <label class="control-label">First Name</label>
-            <div class="controls">
-                <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                    <input type="text" class="input-xlarge" id="fname" name="fname" placeholder="First Name">
+        <div class="row text-center pad-top ">
+            <div class="col-md-12">
+                <h2>Реєстрація</h2>
+            </div>
+        </div>
+         <div class="row  pad-top"> 
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                <strong>   Зареєструйте себе </strong>  
+                    </div>
+                    <div class="panel-body">
+                        <form name="userForm" ng-submit="submitForm()" novalidate>
+<br/>
+                            <div class="form-group input-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                                <span class="input-group-addon"></span>
+                                <input type="text" name="username" class="form-control" ng-model="user.name" placeholder="Ім’я" ng-minlength="3" ng-maxlength="15" required/>                                            
+                            </div>
+                            <p style="color:#a94442" ng-show="userForm.username.$error.minlength" class="help-block">* Ім’я занадто коротке</p>
+                            <p ng-show="userForm.username.$error.required && !userForm.username.$pristine" class="help-block">Ім’я - обов’язкове поле</p>
+
+                            <div class="form-group input-group" ng-class="{ 'has-error' : userForm.last.$invalid && !userForm.last.$pristine }">
+                               <span class="input-group-addon"></span>
+                               <input name="last" type="text" class="form-control" ng-model="user.last" placeholder="Прізвище" ng-minlength="3" ng-maxlength="15" required />
+                            </div>
+                            <p ng-show="userForm.last.$error.minlength" class="help-block">Прізвище занадто коротке</p>
+                            <p ng-show="userForm.last.$error.required && !userForm.last.$pristine" class="help-block">Прізвище - обов’язкове поле</p>
+
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input type="mail" class="form-control" ng-model="user.email" placeholder="Email" />
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input type="password" class="form-control" ng-model="user.password" placeholder="Пароль" />
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input type="password" class="form-control" ng-model="user.password2" placeholder="Пароль ще раз" />
+                            </div>
+                             
+                            <input type='submit' class="btn btn-success" value="Зареєструватись">
+                            <hr />
+                            Вже зареєстровані ?  <a href="#login" >Вхід</a>
+                        </form>
+                    </div>
+                   
                 </div>
-            </div>
+            </div>   
         </div>
-        <div class="control-group ">
-            <label class="control-label">Last Name</label>
-            <div class="controls">
-                <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                    <input type="text" class="input-xlarge" id="lname" name="lname" placeholder="Last Name">
-                </div>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Email</label>
-            <div class="controls">
-                <div class="input-prepend">
-                <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input type="text" class="input-xlarge" id="email" name="email" placeholder="Email">
-                </div>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Gender</label>
-            <div class="controls">
-
-                    <p><div id="gender" name="gender" class="btn-group" data-toggle="buttons-radio">
-                    <button type="button" class="btn btn-info">Male</button>
-                    <button type="button" class="btn btn-info">Female</button>
-
-                  </div></p>
-
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Password</label>
-            <div class="controls">
-                <div class="input-prepend">
-                <span class="add-on"><i class="icon-lock"></i></span>
-                    <input type="Password" id="passwd" class="input-xlarge" name="passwd" placeholder="Password">
-                </div>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Confirm Password</label>
-            <div class="controls">
-                <div class="input-prepend">
-                <span class="add-on"><i class="icon-lock"></i></span>
-                    <input type="Password" id="conpasswd" class="input-xlarge" name="conpasswd" placeholder="Re-enter Password">
-                </div>
-            </div>
-        </div>
-
-        <div class="control-group">
-        <label class="control-label"></label>
-          <div class="controls">
-           <button type="submit" ng-click="validateRegistration()" class="btn btn-success" >Create My Account</button>
-
-          </div>
-
     </div>
-
-      </form>
-
-   </div>
-</div>
