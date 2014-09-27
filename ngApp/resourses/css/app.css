@@ -76,3 +76,6 @@
 .pad-top {
     padding-top:40px;
 }
+form p.help-block {
+    color:#a94442;
+}

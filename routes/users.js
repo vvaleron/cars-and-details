@@ -17,6 +17,8 @@ db.open(function(err, db) {
             }
         });
     }
+    db.close();
+    console.log("close connection to 'working-session' database");
 });
 
 exports.findById = function(params, res) {
@@ -37,19 +39,24 @@ exports.findAll = function(req, res) {
 };
 
 exports.addUser = function(req, res) {
-    var user = req.body;
-    console.log('Adding user: ' + JSON.stringify(user));
-    db.collection('users', function(err, collection) {
-        collection.insert(user, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
-    });
-}
+  res.send(req);
+  db.open(function(err, db) {
+    // var user = req.body;
+    
+    // db.collection('users', function(err, collection) {
+    //     collection.insert(user, {safe:true}, function(err, result) {
+    //         if (err) {
+    //             res.send({'error':'An error has occurred'});
+    //         } else {
+    //             console.log('Success: ' + JSON.stringify(result[0]));
+    //             res.send(result[0]);
+    //         }
+    //     });
+    // });
+    db.close();
+   console.log("close connection to 'working-session' database");
+  });
+};
 
 exports.updateUser = function(req, res) {
     var id = req.params.id;

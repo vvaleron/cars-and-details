@@ -17,6 +17,8 @@ db.open(function(err, db) {
             }
         });
     }
+    db.close();
+    console.log("close connection to 'working-session' database");
 });
 
 exports.getAll = function(req,res){

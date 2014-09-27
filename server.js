@@ -17,11 +17,11 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'ngApp')));
 });
 
-app.get('/users', users.findAll);
-app.get('/users/:id', users.findById);
-app.post('/users', users.addUser);
-app.put('/users/:id', users.updateUser);
-app.delete('/users/:id', users.deleteUser);
+// app.get('/users', users.findAll);
+// app.get('/users/:id', users.findById);
+app.post('/users/new', users.addUser);
+// app.put('/users/:id', users.updateUser);
+// app.delete('/users/:id', users.deleteUser);
 
 app.get('/categories', categories.get);
 app.get('/categories/:id', categories.getById);

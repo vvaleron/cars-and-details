@@ -17,7 +17,7 @@
                                 <span class="input-group-addon"></span>
                                 <input type="text" name="username" class="form-control" ng-model="user.name" placeholder="Ім’я" ng-minlength="3" ng-maxlength="15" required/>                                            
                             </div>
-                            <p style="color:#a94442" ng-show="userForm.username.$error.minlength" class="help-block">* Ім’я занадто коротке</p>
+                            <p ng-show="userForm.username.$error.minlength" class="help-block">* Ім’я занадто коротке</p>
                             <p ng-show="userForm.username.$error.required && !userForm.username.$pristine" class="help-block">Ім’я - обов’язкове поле</p>
 
                             <div class="form-group input-group" ng-class="{ 'has-error' : userForm.last.$invalid && !userForm.last.$pristine }">
@@ -27,19 +27,26 @@
                             <p ng-show="userForm.last.$error.minlength" class="help-block">Прізвище занадто коротке</p>
                             <p ng-show="userForm.last.$error.required && !userForm.last.$pristine" class="help-block">Прізвище - обов’язкове поле</p>
 
+                            <div class="form-group input-group"  ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                                <span class="input-group-addon"></span>
+                                <input type="email" name="email" class="form-control" ng-model="user.email" placeholder="Email" required/>
+                            </div>
+                            <p ng-show="userForm.email.$error.required && !userForm.email.$pristine" class="help-block">Email - обов’язкове поле</p>
+                            <p ng-show="userForm.email.$error.email && !userForm.email.$pristine" class="help-block">Введено невалідний email</p>
+
                             <div class="form-group input-group">
                                 <span class="input-group-addon"></span>
-                                <input type="mail" class="form-control" ng-model="user.email" placeholder="Email" />
+                                <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Пароль" required/>
                             </div>
+                            <p ng-show="userForm.password.$error.required && !userForm.password.$pristine" class="help-block">Пароль - обов’язкове поле</p>
+                            
                             <div class="form-group input-group">
                                 <span class="input-group-addon"></span>
-                                <input type="password" class="form-control" ng-model="user.password" placeholder="Пароль" />
+                                <input type="password" name='confirm_password' class="form-control" ng-model="user.password_verify" placeholder="Пароль ще раз" required data-password-verify="user.password"/>
                             </div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon"></span>
-                                <input type="password" class="form-control" ng-model="user.password2" placeholder="Пароль ще раз" />
-                            </div>
-                             
+                            <p ng-show="userForm.confirm_password.$error.required && !userForm.confirm_password.$pristine" class="help-block">Пароль - обов’язкове поле</p>
+                            <p ng-show="userForm.confirm_password.$error.passwordVerify && !userForm.confirm_password.$pristine" class="help-block">Введені паролі не співпадають</p>
+
                             <input type='submit' class="btn btn-success" value="Зареєструватись">
                             <hr />
                             Вже зареєстровані ?  <a href="#login" >Вхід</a>
