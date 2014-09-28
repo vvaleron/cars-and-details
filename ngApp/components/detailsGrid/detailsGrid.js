@@ -1,10 +1,21 @@
-app.controller('details-grid-controller', ['$scope', '$http', 'categoryService', function($scope, $http, categoryService) {
-    var parentScope = $scope.$parent;
-    categoryService.getCategories();
+app.controller('details-grid-controller',
+    [
+        '$scope',
+        '$http',
+        'categoryService',
+        'subCategoryService',
+        'itemsService',
 
-    parentScope.$watch('categories', function(newVal, oldVal, $scope) {
 
-    });
+        function($scope, $http, categoryService, subCategoryService, itemsService) {
+            var parentScope = $scope.$parent;
+            categoryService.getCategories();
+            debugger
 
-    console.log('details-grid-controller', $scope);
-}]);
+//            parentScope.$watch('categories', function(newVal, oldVal, $scope) {
+//
+//            });
+
+            console.log('details-grid-controller', $scope);
+        }
+    ]);

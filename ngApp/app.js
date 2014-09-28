@@ -37,7 +37,7 @@ run(["$rootScope", "$cookieStore", '$http', function ($rootScope, $cookieStore, 
 
             loginRequest.success(function(data, status, headers, config) {
                 $rootScope.currentUser = data;
-                location.href = location.origin + "/#my-profile";
+                location.href = location.origin + "/#/my-profile";
 
                 console.log(status, location.origin + '/users/auto-login', data);
             });
@@ -46,8 +46,6 @@ run(["$rootScope", "$cookieStore", '$http', function ($rootScope, $cookieStore, 
                 console.log(status, location.origin + '/users/auto-login', data);
             });
         } else {
-            location.href = location.origin + "/#login";
+            location.href = location.origin + "/#/login";
         }
 }]);
-
-console.log('app.js started');

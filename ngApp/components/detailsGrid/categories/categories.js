@@ -32,3 +32,15 @@ app.service(
         }
     }
 );
+
+app.directive("categoryView", function () {
+    function link(scope, element, attrs) {
+        debugger
+    }
+
+    return {
+        link: link,
+        restrict: 'A',
+        templateUrl: 'components/detailsGrid/categories/categoryView.html'
+    }
+});
