@@ -1,3 +1,45 @@
+app.controller('login-controller', ['$scope', '$http', function($scope, $http) {
+    $scope.login = {
+        email: '',
+        password: ''
+    };
+
+    $scope.initLoginForm = function(){
+        var user = this.$parent.currentUser;
+
+        (user && user.email) ? $scope.login.email = user.email : null;
+    };
+
+    $scope.logIn = function() {
+        if ($scope.loginForm.$valid) {
+            var loginRequest = $http({
+                url: location.origin + '/users/login',
+                method: "POST",
+                data: $scope.login
+            });
+
+            loginRequest.success(function(data, status, headers, config) {
+                console.log(status, location.origin + 'users/login', data);
+
+                if (status == 200) {
+                    $scope.$parent.currentUser = data;
+                    location.href = location.origin + "/#/my-profile";
+                } else {
+                    alert('You enter wrong email or password');
+
+                }
+            });
+
+            loginRequest.error(function(data, status, headers, config) {
+                console.log(status, location.origin + 'users/login', data);
+            });
+
+        } else {
+           alert("This form is not valid");
+        }
+    }
+}]);
+
 app.controller('registration-controller', ['$scope', '$http', function($scope, $http) {
 		$scope.user = {
 			name: '', 
@@ -82,15 +124,3 @@ app.directive("passwordVerify",function(){
         }
     };
 });
-
-
-app.controller('login-controller', ['$scope', function($scope) {
-    $scope.initLoginForm = function(){
-        var user = this.$parent.currentUser;
-
-        (user && user.email) ? $scope.loginEmail = user.email : null;
-    };
-}]);
-
-
-
