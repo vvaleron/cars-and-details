@@ -73,6 +73,43 @@ exports.addUser = function(req, res) {
 
 };
 
+exports.login = function (req, res) {
+    var credentials = req.body;
+
+    db.collection('users', function(err, collection) {
+        collection.findOne({ email : credentials.email }, function(err, item) {
+            if (!item) {
+                res.send(204);
+            }
+            if (item.password == credentials.password) {
+                delete item.password;
+                delete item.password_verify;
+
+                res.cookie('currentUser', JSON.stringify(item._id), { expires: new Date(Date.now() + 9000000) });
+                res.status(200).send(item);
+            }
+
+        })
+    });
+};
+
+exports.autoLogin = function (req, res) {
+    var id = req.body.id;
+
+    db.collection('users', function(err, collection) {
+        collection.findOne({ _id : new BSON.ObjectID(id) }, function(err, item) {
+            if (item) {
+                delete item.password;
+                delete item.password_verify;
+
+                res.send(item);
+            } else {
+                res.send(204);
+            }
+        });
+    });
+};
+
 exports.updateUser = function(req, res) {
     var id = req.params.id;
     var user = req.body;

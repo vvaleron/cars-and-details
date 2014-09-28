@@ -1,4 +1,4 @@
-app.controller('login-controller', ['$scope', '$http', function($scope, $http) {
+app.controller('login-controller', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
     $scope.login = {
         email: '',
         password: ''
@@ -22,11 +22,13 @@ app.controller('login-controller', ['$scope', '$http', function($scope, $http) {
                 console.log(status, location.origin + 'users/login', data);
 
                 if (status == 200) {
+                    data.logedIn = true;
                     $scope.$parent.currentUser = data;
                     location.href = location.origin + "/#/my-profile";
+                } else if (status == 204) {
+                    alert('You enter wrong email');
                 } else {
-                    alert('You enter wrong email or password');
-
+                    alert('Login Failed!');
                 }
             });
 

@@ -20,7 +20,8 @@ app.configure(function () {
 // app.get('/users', users.findAll);
 // app.get('/users/:id', users.findById);
 app.post('/users/new', users.addUser);
-// app.put('/users/:id', users.updateUser);
+app.post('/users/login', users.login);
+app.post('/users/auto-login', users.autoLogin);
 // app.delete('/users/:id', users.deleteUser);
 
 app.get('/categories', categories.get);
