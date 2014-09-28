@@ -8,22 +8,30 @@ app.controller('registration-controller', ['$scope', '$http', function($scope, $
 		};
 
 
+        $scope.alreadyExist = function (label, value) {
+            alert(label + 'with this value: ' + value + 'is already exist.');
+        };
 
 		$scope.submitForm = function() {
 			if ($scope.userForm.$valid) {
-				console.log($scope.user)
+				console.log($scope.user);
 				$http({
 				    url: location.origin + '/users/new',
 				    method: "POST",
 				    data: $scope.user
 				}).success(function(data, status, headers, config) {
-				    $scope.data = data;
-				    console.log(status, location.origin + 'users/new', data);
+
+                    console.log(status, location.origin + 'users/new', data);
+                    if (status == 204) {
+                        $scope.alreadyExist('email', config.data.email);
+                    } else {
+                        $scope.$parent.currentUser = config.data;
+                    location.href = location.origin + "/#/login";
+                    }
 				}).error(function(data, status, headers, config) {
-				    $scope.status = status;
 				    console.log(status, location.origin + 'users/new', data);
 				});
-				debugger
+
 			} else {
 				alert("This form is not valid");
 			}
@@ -77,7 +85,11 @@ app.directive("passwordVerify",function(){
 
 
 app.controller('login-controller', ['$scope', function($scope) {
+    $scope.initLoginForm = function(){
+        var user = this.$parent.currentUser;
 
+        (user && user.email) ? $scope.loginEmail = user.email : null;
+    };
 }]);
 
 

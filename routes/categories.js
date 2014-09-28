@@ -17,9 +17,9 @@ db.open(function(err, db) {
             }
         });
     }
-    db.close();
-    console.log("close connection to 'working-session' database");
 });
+db.close();
+console.log("close connection to 'working-session' database");
 exports.getById = function(req,res){
     var id = req.route.params['id'];
     console.log('Getting category by _id: '+id);

@@ -17,9 +17,10 @@ db.open(function(err, db) {
             }
         });
     }
-    db.close();
     console.log("close connection to 'working-session' database");
 });
+
+db.close();
 
 exports.findById = function(params, res) {
     db.collection('users', function(err, collection) {
@@ -39,23 +40,37 @@ exports.findAll = function(req, res) {
 };
 
 exports.addUser = function(req, res) {
-  res.send(req);
-  db.open(function(err, db) {
-    // var user = req.body;
-    
-    // db.collection('users', function(err, collection) {
-    //     collection.insert(user, {safe:true}, function(err, result) {
-    //         if (err) {
-    //             res.send({'error':'An error has occurred'});
-    //         } else {
-    //             console.log('Success: ' + JSON.stringify(result[0]));
-    //             res.send(result[0]);
-    //         }
-    //     });
-    // });
-    db.close();
-   console.log("close connection to 'working-session' database");
-  });
+    var user = req.body,
+    saveRecord = function(){
+
+       db.collection('users', function(err, collection) {
+            collection.insert(user, {safe: true}, function (err, result) {
+                 if (err) {
+                     res.send('creating new user failed!!');
+                 } else {
+                     console.log('Success: ' + JSON.stringify(result[0]));
+                     res.send(201);
+                 }
+            })
+        });
+
+    };
+
+    db.collection('users', function(err, collection) {
+        collection.find({'email':user.email}).toArray(function(err, items) {
+            if (err) {
+                res.send({'error':'An error has occurred during compare email filds'});
+            }
+            if (items.length == 0) {
+                saveRecord();
+            } else {
+                res.send(204);
+            }
+
+        });
+    });
+
+
 };
 
 exports.updateUser = function(req, res) {

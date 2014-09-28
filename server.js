@@ -35,7 +35,7 @@ app.post('/sub_categories', subCategories.add);
 //app.put('/sub_categories/:id', subCategories.update);
 //app.delete('/sub_categories/:id', subCategories.delete);
 
-app.get('/items', items.getAll);
+
 app.get('/items/:parent_id', items.getByCategoryId);
 app.get('/items/:parent_id/:sub_parent_id', items.getBySubCatAndCat);
 app.post('/items', items.add);

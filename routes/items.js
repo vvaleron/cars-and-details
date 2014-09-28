@@ -5,9 +5,9 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('working-session', server, {safe: true});
+DB = new Db('working-session', server, {safe: true});
 
-db.open(function(err, db) {
+DB.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'working-session' database");
         db.collection('subCategories', {safe:true}, function(err, collection) {
@@ -17,17 +17,17 @@ db.open(function(err, db) {
             }
         });
     }
-    db.close();
+    DB.close();
     console.log("close connection to 'working-session' database");
 });
 
-exports.getAll = function(req,res){
-    db.collection('items',function(err,collection){
-        collection.find().toArray(function(err,items){
-            res.send(JSON.stringify(items));
-        });
-    });
-};
+//exports.getAll = function(req,res){
+//    db.collection('items',function(err,collection){
+//        collection.find().toArray(function(err,items){
+//            res.send(JSON.stringify(items));
+//        });
+//    });
+//};
 
 exports.getByCategoryId = function(req,res){
     var id = req.params["parent_id"];

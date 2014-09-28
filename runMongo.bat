@@ -1,1 +1,1 @@
-D:\mongodb\bin\mongod.exe --dbpath ~/work/cars-and-details/db
+D:\mongodb\bin\mongod.exe --dbpath ~/work/ng-cars-and-details/db

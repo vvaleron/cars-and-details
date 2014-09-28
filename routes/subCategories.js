@@ -6,20 +6,20 @@ var Server = mongo.Server,
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('working-session', server, {safe: true});
-
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'working-session' database");
-        db.collection('subCategories', {safe:true}, function(err, collection) {
-            if (err) {
-                console.log("The 'categories' collection doesn't exist. Creating it with sample data...");
-                populateDB();
-            }
-        });
-    }
-    db.close();
-    console.log("close connection to 'working-session' database");
-});
+//
+//db.open(function(err, db) {
+//    if(!err) {
+//        console.log("Connected to 'working-session' database");
+//        db.collection('subCategories', {safe:true}, function(err, collection) {
+//            if (err) {
+//                console.log("The 'categories' collection doesn't exist. Creating it with sample data...");
+//                populateDB();
+//            }
+//        });
+//    }
+//    db.close();
+//    console.log("close connection to 'working-session' database");
+//});
 exports.getById = function(req,res){
     var id = req.route.params['id'];
     console.log('Getting category by _id: '+id);
