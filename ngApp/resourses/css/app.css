@@ -117,3 +117,12 @@ form p.help-block {
     background-color: #666;
 
 }
+.category-settings-view .col-md-3.col-md-pull-9
+{
+    padding: 0 4px;
+    font-size: 12px;
+}
+.category-settings-view .col-md-3.col-md-pull-9 a
+{
+    padding: 4px 4px;
+}
