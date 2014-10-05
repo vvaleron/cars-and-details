@@ -1,3 +1,16 @@
-<div class="container">
-    <div>Category</div>
+<div action-menu-view class="categories-actions action-menu-view" ng-init="actionModel='categories'"></div>
+
+<div class="btn-group-vertical">
+    <div class="btn-group" ng-repeat="category in categories" style="min-width: 200px;">
+        <button ng-class="{active: categories.active == category}" ng-click="categories.active = category" type="button" class="btn btn-default">
+            {{category.name}}
+            <span ng-if="categories.active != category" class="caret"></span>
+            <a ng-click="categorySettings($event, category)" ng-if="categories.active == category"  data-toggle="modal" data-target=".correction-window" class="glyphicon glyphicon-cog"></a>
+        </button>
+        <div sub-categories-view
+             ng-if="categories.active == category"
+             class="btn-group-vertical sub-categories-view"
+             style="min-width: 200px;">
+        </div>
+    </div>
 </div>

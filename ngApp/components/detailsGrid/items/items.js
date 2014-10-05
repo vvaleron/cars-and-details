@@ -3,8 +3,13 @@ app.service(
     function( $http, $rootScope ) {
 
         return({
-            getItems: getItems
+            getItems: getItems,
+            addNew: addNew
         });
+
+        function addNew () {
+
+        }
 
         function getItems() {
 
@@ -35,7 +40,7 @@ app.service(
 
 app.directive("itemsView", function () {
     function link(scope, element, attrs) {
-        debugger
+//        debugger
     }
 
     return {

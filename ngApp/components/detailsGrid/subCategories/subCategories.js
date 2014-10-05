@@ -2,9 +2,19 @@ app.service(
     "subCategoryService",
     function( $http, $rootScope ) {
 
-        return({
-            getSubCategories: getSubCategories
+        return ({
+            getSubCategories: getSubCategories,
+            addNew: addNew,
+            filterFor: filterFor
         });
+
+        function addNew () {
+
+        }
+
+        function filterFor (id) {
+
+        }
 
         function getSubCategories() {
 
@@ -18,6 +28,7 @@ app.service(
 
                 if (status == 200) {
                     $rootScope.subCategories = data;
+
                 } else if (status == 204) {
                     alert('You enter wrong email');
                 } else {
@@ -35,7 +46,7 @@ app.service(
 
 app.directive("subCategoriesView", function () {
     function link(scope, element, attrs) {
-        debugger
+//        debugger
     }
 
     return {

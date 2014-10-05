@@ -79,3 +79,41 @@
 form p.help-block {
     color:#a94442;
 }
+.category-view > .btn-group-vertical .badge
+{
+    float: right;
+    top: 0;
+}
+.category-view > .btn-group-vertical .glyphicon.glyphicon-cog
+{
+    float: right;
+    margin: 2px 5px;
+}
+.category-view .btn-sm, .category-view .btn-group-sm > .btn
+{
+    padding: 5px 12px;
+}
+.sub-categories-view .btn
+{
+    padding: 2px 12px;
+    margin-bottom: 6px;
+    border: none;
+    background-color: #000;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    color: #999;
+}
+.sub-categories-view .btn .badge
+{
+    color: #999;
+}
+.sub-categories-view .btn:hover
+{
+    color:#ffffff;
+}
+.sub-categories-view .btn:hover .badge
+{
+    color:#ffffff;
+    background-color: #666;
+
+}
