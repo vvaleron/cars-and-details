@@ -28,7 +28,7 @@ app.get('/categories', categories.get);
 app.get('/categories/:id', categories.getById);
 app.post('/categories', categories.add);
 app.put('/categories/:id', categories.update);
-app.delete('/categories/:id', categories.delete);
+app.delete('/categories/:id', categories.dlt);
 
 app.get('/sub_categories', subCategories.get);
 //app.get('/sub_categories/:id', subCategories.getById);
@@ -36,7 +36,7 @@ app.post('/sub_categories', subCategories.add);
 //app.put('/sub_categories/:id', subCategories.update);
 //app.delete('/sub_categories/:id', subCategories.delete);
 
-
+app.get('/items', items.get);
 app.get('/items/:parent_id', items.getByCategoryId);
 app.get('/items/:parent_id/:sub_parent_id', items.getBySubCatAndCat);
 app.post('/items', items.add);

@@ -1,17 +1,19 @@
-<div class="modal-header">
+<div class="modal-header" ng-init="catSettingsWin">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     <h4 class="modal-title">Category Settings {{categories.active.name}}</h4>
 </div>
 <div class="modal-body">
-    <div class="row">
+    <div class="row" ng-init="catSettingsWin.activeView = 'subCategoriesList'">
         <div class="col-md-9 col-md-push-3">
-            <a href="javascript:void(false)" class="thumbnail">
-                <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;">
-            </a>
+            <!--<a href="javascript:void(false)" class="thumbnail">-->
+                <div ng-if="catSettingsWin.activeView == 'addSubCategoriesForm'" add-sub-categories-form class="panel panel-default"></div>
+                <div ng-if="catSettingsWin.activeView == 'subCategoriesList'" sub-categories-list class="panel panel-default"></div>
+            <!--</a>-->
         </div>
         <div class="col-md-3 col-md-pull-9">
             <div class="list-group">
-                <a href="javascript:void(false)" class="list-group-item disabled">Add Sub Category</a>
+                <a ng-click="catSettingsWin.activeView = 'subCategoriesList'" href="javascript:void(false)" class="list-group-item disabled">List</a>
+                <a ng-click="catSettingsWin.activeView = 'addSubCategoriesForm'" href="javascript:void(false)" class="list-group-item disabled">Add Sub Category</a>
                 <a href="javascript:void(false)" class="list-group-item">Remove Sub Category</a>
                 <a href="javascript:void(false)" class="list-group-item">Add Item</a>
                 <a href="javascript:void(false)" class="list-group-item">Remove Item</a>

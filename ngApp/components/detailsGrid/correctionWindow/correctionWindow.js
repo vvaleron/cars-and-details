@@ -22,6 +22,30 @@ app.directive("categorySettingsView", function () {
     }
 });
 
+app.directive("addSubCategoriesForm", function () {
+    function link(scope, element, attrs) {
+//        debugger
+    }
+
+    return {
+        link: link,
+        restrict: 'A',
+        templateUrl: 'components/detailsGrid/correctionWindow/categorySettings/addSubCategoriesForm.html'
+    }
+});
+
+app.directive("subCategoriesList", function () {
+    function link(scope, element, attrs) {
+//        debugger
+    }
+
+    return {
+        link: link,
+        restrict: 'A',
+        templateUrl: 'components/detailsGrid/correctionWindow/categorySettings/subCategoriesList.html'
+    }
+});
+
 app.directive("addNewForm", function () {
     function link(scope, element, attrs) {
 //        debugger

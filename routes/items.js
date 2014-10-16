@@ -21,13 +21,13 @@ DB.open(function(err, db) {
     console.log("close connection to 'working-session' database");
 });
 
-//exports.getAll = function(req,res){
-//    db.collection('items',function(err,collection){
-//        collection.find().toArray(function(err,items){
-//            res.send(JSON.stringify(items));
-//        });
-//    });
-//};
+exports.get = function(req,res){
+    db.collection('items',function(err,collection){
+        collection.find().toArray(function(err,items){
+            res.send(JSON.stringify(items));
+        });
+    });
+};
 
 exports.getByCategoryId = function(req,res){
     var id = req.params["parent_id"];

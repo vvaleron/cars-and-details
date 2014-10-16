@@ -27,27 +27,32 @@ app.controller('details-grid-controller',
         function($scope, $http, detailsService, categoryService, subCategoryService, itemsService) {
              categoryService.getCategories();
              subCategoryService.getSubCategories();
+             itemsService.getItems();
 //            parentScope.$watch('categories', function(newVal, oldVal, $scope) {
 //
 //            });
 
             $scope.categorySettings = function (event, category) {
-                this.$parent.$parent.actionModel = "categorySettings";
+                $scope.actionModel = "categorySettings";
                 var current = categoryService.getCurrent(),
                     subCategories = subCategoryService.filterFor(current._id);
 
                 console.log(event, category);
             };
 
-            $scope.actionAdd = function () {
-                var model = this.actionModel;
+            $scope.catSettingsWin = {
+                activeView: 'list'
+            };
 
-                switch (model) {
+            $scope.actionAdd = function (type) {
+
+                switch (type) {
                     case "categories":
                         categoryService.addNew(this.addNewData.req);
                         break;
                     case "subCategories":
                         subCategoryService.addNew(this.addNewData.req);
+                        subCategoryService.updateCategory();
                         break;
                     case "items":
                         itemsService.addNew(this.addNewData.req);
@@ -55,9 +60,7 @@ app.controller('details-grid-controller',
                 }
             };
 
-            $scope.actionChange = function () {
-                var model = this.actionModel;
-
+            $scope.actionChange = function (model) {
                 switch (model) {
                     case "categories":
                         var id = categoryService.getCurrent(true);
@@ -72,6 +75,18 @@ app.controller('details-grid-controller',
                 }
             };
 
-            console.log('details-grid-controller', $scope);
+            $scope.kill = function (model) {
+                switch (model) {
+                    case "categories": 
+                        categoryService.kill();
+                        break;
+                    case "subCategories":
+                        subCategoryService.kill();
+                        break;
+                    case "items":
+                        itemsService.kill();
+                        break;
+                }
+            };
         }
     ]);

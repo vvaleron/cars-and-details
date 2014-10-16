@@ -1,1 +1,9 @@
-<div class="well">===========    items    ==========</div>
+    <div class="well">
+        <div items-actions></div>
+        Items
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="Item in $parent.Items | filter:{ categoryId: $parent.categories.active._id }">
+                {{ Item.name }}
+            </li>
+        </ul>
+    </div>

@@ -9,3 +9,15 @@ app.directive("actionMenuView", function () {
         templateUrl: 'components/detailsGrid/actionMenu/actionMenuView.html'
     }
 });
+
+app.directive("itemsActions", function () {
+    function link(scope, element, attrs) {
+        console.log(scope, element, attrs, "itemsActions");
+    }
+
+    return {
+        link: link,
+        restrict: 'A',
+        templateUrl: 'components/detailsGrid/actionMenu/itemsActions.html'
+    }
+});

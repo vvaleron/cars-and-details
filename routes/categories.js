@@ -68,7 +68,7 @@ exports.update = function(req,res){
         });
     });
 };
-exports.delete = function(req,res){
+exports.dlt = function(req,res){
     var id = req.params.id,
         justOne = true;
     console.log('Deleting category: ' + id);
