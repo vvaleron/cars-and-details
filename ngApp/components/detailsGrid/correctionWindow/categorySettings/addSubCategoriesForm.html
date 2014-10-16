@@ -1,0 +1,11 @@
+
+  <div ng-init="model = 'subCategories'" class="panel-body">
+    <div class="input-group">
+    <span class="input-group-addon">New sub category name</span>
+    <input ng-model="addNewData.req.name" type="text" class="form-control" placeholder="enter new {{ model }} name...">
+</div>
+
+  </div>
+  <div class="panel-footer">
+  <button ng-click="actionAdd( model )" type="button" class="btn btn-group-xs btn-primary" data-dismiss="modal">Save changes</button>
+</div>
