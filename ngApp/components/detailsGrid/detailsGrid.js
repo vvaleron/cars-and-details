@@ -34,10 +34,6 @@ app.controller('details-grid-controller',
 
             $scope.categorySettings = function (event, category) {
                 $scope.actionModel = "categorySettings";
-                var current = categoryService.getCurrent(),
-                    subCategories = subCategoryService.filterFor(current._id);
-
-                console.log(event, category);
             };
 
             $scope.catSettingsWin = {
@@ -87,6 +83,11 @@ app.controller('details-grid-controller',
                         itemsService.kill();
                         break;
                 }
+            };
+
+            $scope.subCatClick = function ($event, subCategory) {
+                subCategoryService.setActiveSubCategory(subCategory);
+                console.log(subCategory, "ACTIVE SUBCATEGORY");
             };
         }
     ]);

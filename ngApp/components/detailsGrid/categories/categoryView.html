@@ -2,7 +2,7 @@
 
 <div class="btn-group-vertical">
     <div ng-if="!!category" class="btn-group" ng-repeat="category in categories" style="min-width: 200px;">
-        <button ng-class="{active: categories.active == category}" ng-click="categories.active = category" type="button" class="btn btn-default">
+        <button ng-class="{active: categories.active == category}" ng-click="categories.active = category;" type="button" class="btn btn-default">
             {{category.name}}
             <span ng-if="categories.active != category" class="caret"></span>
             <a ng-click="categorySettings($event, category)" ng-if="categories.active == category"  data-toggle="modal" data-target=".correction-window" class="glyphicon glyphicon-cog"></a>
@@ -10,7 +10,7 @@
         <div ng-repeat="subCategory in category.childs" sub-categories-view
              ng-if="categories.active == category"
              class="btn-group-vertical sub-categories-view"
-             style="min-width: 200px;">
+             style="min-width: 255px;">
         </div>
     </div>
 </div>

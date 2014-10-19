@@ -6,7 +6,7 @@ app.service(
             getSubCategories: getSubCategories,
             addNew: addNew,
             updateCategory: updateCategory,
-            filterFor: filterFor
+            setActiveSubCategory: setActiveSubCategory
         });
 
         function addNew (data) {
@@ -37,10 +37,6 @@ app.service(
             request.error(function(data, status, headers, config) {
                 console.log('ERROR:   ',  status, location.origin, data);
             });
-
-        }
-
-        function filterFor (id) {
 
         }
 
@@ -86,6 +82,14 @@ app.service(
             return $rootScope.subCategories.filter(function (item) {
                 return item.parent == this.id;
             }, {id: id});
+        }
+
+        function getActiveSubCategory () {
+           return $rootScope.subCategories.active ? $rootScope.subCategories.active : null;
+        }
+
+        function setActiveSubCategory (subCategory) {
+            $rootScope.subCategories.active = subCategory
         }
     }
 );

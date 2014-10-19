@@ -1,4 +1,6 @@
-<button type="button" class="btn btn-default">
+<button ng-class="{active: $parent.subCategories.active == subCategory}"
+        ng-click="subCatClick($event, subCategory)" type="button" class="btn btn-default">
     {{subCategory.name}}
-    <span class="badge">14</span>
+    <span   ng-class="{active: $parent.subCategories.active == subCategory}"
+            class="badge">14</span>
 </button>

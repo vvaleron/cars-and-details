@@ -1,3 +1,10 @@
+app.filter(
+    "testFilter",
+    function ( data ) {
+        debugger
+    }
+);
+
 app.service(
     "itemsService",
     function( $http, $rootScope ) {
@@ -9,7 +16,7 @@ app.service(
 
         function addNew (data) {
             var activeCategory = $rootScope.categories.active,
-                activeSubCategory = $rootScope.subCategories.active,
+                activeSubCategory = $rootScope.subCategories.active._id,
                 params = {
                     name: data.name,
                     categoryId: activeCategory._id,
@@ -68,8 +75,27 @@ app.service(
         }
 
         function updateItems () {
+           var subCategories = $rootScope.subCategories;
+
+//            TODO: use $filterProvider for custom filters
+//            $filter('filter')(subCategories, filterBySubcategory, true);
+//            console.log($filter, "$filter");
+
+//           for (key in subCategories) {
+//               subCategories[key]["items"] = filterBySubcategory(subCategories[key]._id);
+//           }
+        }
+
+        function filterBySubcategory (item) {
             debugger
         }
+
+//        function filterBySubcategory (id) {
+//            return $rootScope.Items.filter(function (item, index, arr) {
+//                return item.subCategoryId == this.id;
+//            }, {id: id});
+//        }
+
     }
 );
 

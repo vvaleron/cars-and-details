@@ -96,7 +96,7 @@ form p.help-block {
 .sub-categories-view .btn
 {
     padding: 2px 12px;
-    margin-bottom: 6px;
+    margin-bottom: 1px;
     border: none;
     background-color: #000;
     border-top-left-radius: 0;
@@ -107,11 +107,13 @@ form p.help-block {
 {
     color: #999;
 }
-.sub-categories-view .btn:hover
+.sub-categories-view .btn:hover,
+.sub-categories-view .btn.active
 {
     color:#ffffff;
 }
-.sub-categories-view .btn:hover .badge
+.sub-categories-view .btn:hover .badge,
+.sub-categories-view .btn .badge.active
 {
     color:#ffffff;
     background-color: #666;
