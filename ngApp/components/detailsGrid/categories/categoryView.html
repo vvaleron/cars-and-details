@@ -1,8 +1,17 @@
 <div action-menu-view class="categories-actions action-menu-view"></div>
 
 <div class="btn-group-vertical">
+    <button ng-class="{active: categories.active == 'All'}"
+            ng-click="categories.active = 'All'; subCategories.active = false;"
+            type="button" class="btn btn-default">
+        All
+        <span ng-if="categories.active != 'All'" class="caret"></span>
+        <a ng-click="categorySettings($event, category)" ng-if="categories.active == 'All'"  data-toggle="modal" data-target=".correction-window" class="glyphicon glyphicon-cog"></a>
+    </button>
     <div ng-if="!!category" class="btn-group" ng-repeat="category in categories" style="min-width: 200px;">
-        <button ng-class="{active: categories.active == category}" ng-click="categories.active = category;" type="button" class="btn btn-default">
+        <button ng-class="{active: categories.active == category}"
+                ng-click="categories.active = category; subCategories.active = false;"
+                type="button" class="btn btn-default">
             {{category.name}}
             <span ng-if="categories.active != category" class="caret"></span>
             <a ng-click="categorySettings($event, category)" ng-if="categories.active == category"  data-toggle="modal" data-target=".correction-window" class="glyphicon glyphicon-cog"></a>

@@ -21,6 +21,11 @@ DB.open(function(err, db) {
     console.log("close connection to 'working-session' database");
 });
 
+// action can be "add", "delete", "update"
+function updateParents (action, item) {
+
+}
+
 exports.get = function(req,res){
     db.collection('items',function(err,collection){
         collection.find().toArray(function(err,items){
@@ -86,6 +91,7 @@ exports.add = function(req,res){
         });
     });
 };
+
 exports.update = function(req,res){
     var id = req.params.id,
         category = req.body;
@@ -103,6 +109,7 @@ exports.update = function(req,res){
         });
     });
 };
+
 exports.delete = function(req,res){
     var id = req.params.id,
         justOne = true;

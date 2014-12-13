@@ -5,7 +5,7 @@
             <li class="list-group-item"
                 ng-repeat="Item in $parent.Items
                 | filter: { categoryId: $parent.categories.active._id }
-                | filter: {subCategoryId: $parent.subCategories.active._id} ">
+                | filter: { subCategoryId: $parent.subCategories.active._id} ">
                 {{ Item.name }}
             </li>
         </ul>
